@@ -87,17 +87,16 @@ class _MyHomePageState extends State<MyHomePage> {
           padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
           height: 100,
           width: double.maxFinite,
-          child: Row(
-            children: [
-              Expanded(flex: 1, child: Text(post.url!)),
-              SizedBox(width: 10),
-              // Expanded(flex: 3, child: Text(post.title!)),
-            ],
+          child:
 
-          ),
+              Expanded(flex: 1, child: Text(post.url!)),
+
+
+
+
         ),
 
-          onTap: () => launchAnotherApp("https://www.twitter.com")
+          onTap: () => launchAnotherApp(post.url)
 
         );
       },
