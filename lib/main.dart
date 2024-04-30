@@ -37,13 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // function to fetch data from api and return future list of posts
   static Future<List<Post>> getPosts() async {
-    var url = Uri.parse("https://jsonplaceholder.typicode.com/albums/1/photos");
+    var url = Uri.parse("https://sifff.free.beeceptor.com/list");
     final response = await http.get(url, headers: {"Content-Type": "application/json"});
     final List body = json.decode(response.body);
     return body.map((e) => Post.fromJson(e)).toList();
   }
-  void launchAnotherApp() async {
-    if (!await launchUrl(Uri.parse("https://www.twitter.com"),
+  void launchAnotherApp(urlString) async {
+    if (!await launchUrl(Uri.parse(urlString),
         mode: LaunchMode.externalApplication)) {
       throw 'Could not launch ';
     }
@@ -89,18 +89,15 @@ class _MyHomePageState extends State<MyHomePage> {
           width: double.maxFinite,
           child: Row(
             children: [
-              Expanded(flex: 1, child: Image.network(post.url!)),
+              Expanded(flex: 1, child: Text(post.url!)),
               SizedBox(width: 10),
-              Expanded(flex: 3, child: Text(post.title!)),
+              // Expanded(flex: 3, child: Text(post.title!)),
             ],
+
           ),
         ),
-        // onTap:() async {
-        //   if (await canLaunch("https://www.google.com")) {
-        //     await launch("https://www.google.com");
-        //   }
-        // }
-          onTap: () => launchAnotherApp()
+
+          onTap: () => launchAnotherApp("https://www.twitter.com")
 
         );
       },
